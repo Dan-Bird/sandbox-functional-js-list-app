@@ -1,5 +1,6 @@
 const elem = tag => document.createElement(tag);
 const text = content => document.createTextNode(content);
+const getElem = id => document.getElementById(id);
 
 const append = R.curry(function (node, element) {
   element.appendChild(node);

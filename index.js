@@ -1,4 +1,15 @@
-const message = content =>
-  R.pipe(attr('data-message', content), append(text(content)))(elem('div'));
+const app = (state, output) => {
+  const appendFns = state.map((content, index) => {
+    return append(message(content, index));
+  });
 
-document.body.appendChild(message('example message'));
+  R.pipe(...appendFns)(output);
+};
+
+const message = (content, index) =>
+  R.pipe(attr('data-index', index), append(text(content)))(elem('div'));
+
+app(
+  Object.freeze(['first message', 'second message']),
+  getElem('message-container')
+);
