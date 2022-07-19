@@ -6,6 +6,7 @@ const app = (state, output, dispatch) => {
 
     const newText = getText();
     const newState = [...state, newText];
+    setText('');
     app(newState, output, dispatch);
   });
 };

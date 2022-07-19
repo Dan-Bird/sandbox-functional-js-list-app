@@ -2,6 +2,7 @@ const elem = tag => document.createElement(tag);
 const text = content => document.createTextNode(content);
 const getElem = id => document.getElementById(id);
 const getText = () => getElem('input-field').value;
+const setText = value => (getElem('input-field').value = value);
 
 const on = R.curry(function (eventType, element, fn) {
   element.addEventListener(eventType, fn);
