@@ -5,6 +5,8 @@ const getText = () => getElem('input-field').value;
 
 const on = R.curry(function (eventType, element, fn) {
   element.addEventListener(eventType, fn);
+
+  return () => element.removeEventListener(eventType, fn);
 });
 
 const append = R.curry(function (node, element) {
