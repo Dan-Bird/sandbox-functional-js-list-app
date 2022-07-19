@@ -1,5 +1,5 @@
 const app = (state, output, dispatch) => {
-  append(view(state), output);
+  R.pipe(clear(), append(view(state)))(output);
 
   dispatch(e => {
     const newText = getText();
