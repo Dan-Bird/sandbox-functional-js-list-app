@@ -6,14 +6,13 @@ const message = (content, index) =>
   R.pipe(attr('data-index', index), append(text(content)))(elem('div'));
 
 const view = state => {
+  const el = elem('div');
+
   const appendFns = state.map((content, index) => {
     return append(message(content, index));
   });
 
-  return R.pipe(...appendFns)(elem('div'));
+  return state.length > 0 ? R.pipe(...appendFns)(elem('div')) : el;
 };
 
-app(
-  Object.freeze(['first message', 'second message']),
-  getElem('message-container')
-);
+app(Object.freeze([]), getElem('message-container'));
